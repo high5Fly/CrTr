@@ -11,7 +11,7 @@ import AVFoundation
 import Vision
 
 class ViewController: UIViewController {
-
+    
     @IBOutlet weak var imageView: UIImageView!
     var session = AVCaptureSession()
     var requests = [VNRequest]()
@@ -37,7 +37,7 @@ class ViewController: UIViewController {
         startLiveVideo()
         startTextDetection()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -68,9 +68,9 @@ class ViewController: UIViewController {
     }
     
     func startTextDetection() {
-        let textRequest = VNDetectTextRectanglesRequest(completionHandler: self.detectTextHandler)
+        let textRequest = VNDetectTextRectanglesRequest(completionHandler: detectTextHandler)
         textRequest.reportCharacterBoxes = true
-        self.requests = [textRequest]
+        requests = [textRequest]
     }
     
     func detectTextHandler(request: VNRequest, error: Error?) {
@@ -87,18 +87,15 @@ class ViewController: UIViewController {
                 guard let rg = region else {
                     continue
                 }
-                
+                //https://stackoverflow.com/questions/44533148/converting-a-vision-vntextobservation-to-a-string
+                //https://github.com/cyruslok/iOS11-Vision-Framework-Demo
                 self.highlightWord(box: rg)
-                
-                if let boxes = region?.characterBoxes {
-                    for characterBox in boxes {
-                        self.highlightLetters(box: characterBox)
-                    }
-                }
+        
             }
         }
     }
     
+
     func highlightWord(box: VNTextObservation) {
         guard let boxes = box.characterBoxes else {
             return
@@ -136,21 +133,6 @@ class ViewController: UIViewController {
         
         imageView.layer.addSublayer(outline)
     }
-    
-    func highlightLetters(box: VNRectangleObservation) {
-        let xCord = box.topLeft.x * imageView.frame.size.width
-        let yCord = (1 - box.topLeft.y) * imageView.frame.size.height
-        let width = (box.topRight.x - box.bottomLeft.x) * imageView.frame.size.width
-        let height = (box.topLeft.y - box.bottomLeft.y) * imageView.frame.size.height
-        
-        let outline = CALayer()
-        outline.frame = CGRect(x: xCord, y: yCord, width: width, height: height)
-        outline.borderWidth = 1.0
-        outline.borderColor = UIColor.blue.cgColor
-        
-        imageView.layer.addSublayer(outline)
-    }
-
 }
 
 extension ViewController: AVCaptureVideoDataOutputSampleBufferDelegate {

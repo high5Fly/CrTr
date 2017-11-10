@@ -20,7 +20,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        let tr = GoogleTranslatorManager()
+        let tr = GoogleManager()
         let param = GoogleTranslateParams(sourceLang: "en", targetLang: "de", text: "Hello World!")
         tr.translate(params: param) { (result) in
             print(result!)
@@ -87,8 +87,7 @@ class ViewController: UIViewController {
                 guard let rg = region else {
                     continue
                 }
-                //https://stackoverflow.com/questions/44533148/converting-a-vision-vntextobservation-to-a-string
-                //https://github.com/cyruslok/iOS11-Vision-Framework-Demo
+                
                 self.highlightWord(box: rg)
         
             }

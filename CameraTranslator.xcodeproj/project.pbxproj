@@ -12,7 +12,8 @@
 		3D2BBEAC1FB1DB9C00D13F23 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D2BBEAA1FB1DB9C00D13F23 /* Main.storyboard */; };
 		3D2BBEAE1FB1DB9C00D13F23 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3D2BBEAD1FB1DB9C00D13F23 /* Assets.xcassets */; };
 		3D2BBEB11FB1DB9C00D13F23 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D2BBEAF1FB1DB9C00D13F23 /* LaunchScreen.storyboard */; };
-		3D2BBEBA1FB1DBDE00D13F23 /* GoogleTranslatorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2BBEB91FB1DBDE00D13F23 /* GoogleTranslatorManager.swift */; };
+		3D2BBEBA1FB1DBDE00D13F23 /* GoogleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2BBEB91FB1DBDE00D13F23 /* GoogleManager.swift */; };
+		3D8453581FB5B70400007378 /* GoogleResponses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8453571FB5B70400007378 /* GoogleResponses.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,7 +24,8 @@
 		3D2BBEAD1FB1DB9C00D13F23 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3D2BBEB01FB1DB9C00D13F23 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3D2BBEB21FB1DB9C00D13F23 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3D2BBEB91FB1DBDE00D13F23 /* GoogleTranslatorManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleTranslatorManager.swift; sourceTree = "<group>"; };
+		3D2BBEB91FB1DBDE00D13F23 /* GoogleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleManager.swift; sourceTree = "<group>"; };
+		3D8453571FB5B70400007378 /* GoogleResponses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleResponses.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,9 +72,18 @@
 		3D2BBEB81FB1DBAA00D13F23 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				3D2BBEB91FB1DBDE00D13F23 /* GoogleTranslatorManager.swift */,
+				3D8453591FB5B74500007378 /* Responses */,
+				3D2BBEB91FB1DBDE00D13F23 /* GoogleManager.swift */,
 			);
 			path = Managers;
+			sourceTree = "<group>";
+		};
+		3D8453591FB5B74500007378 /* Responses */ = {
+			isa = PBXGroup;
+			children = (
+				3D8453571FB5B70400007378 /* GoogleResponses.swift */,
+			);
+			path = Responses;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -149,7 +160,8 @@
 			files = (
 				3D2BBEA91FB1DB9C00D13F23 /* ViewController.swift in Sources */,
 				3D2BBEA71FB1DB9C00D13F23 /* AppDelegate.swift in Sources */,
-				3D2BBEBA1FB1DBDE00D13F23 /* GoogleTranslatorManager.swift in Sources */,
+				3D2BBEBA1FB1DBDE00D13F23 /* GoogleManager.swift in Sources */,
+				3D8453581FB5B70400007378 /* GoogleResponses.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

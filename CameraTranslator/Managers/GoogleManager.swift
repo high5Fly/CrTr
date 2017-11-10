@@ -8,11 +8,12 @@
 
 import UIKit
 
-public struct GoogleTranslateParams {
+public struct GoogleParams {
     
     var sourceLang: String
     var targetLang: String
     var text: String
+    var image: String?
 }
 
 typealias RequestCompletionHandler = ((_ result: Any?, _ error: Error?) -> Void)!
@@ -21,9 +22,9 @@ class GoogleManager: NSObject {
     static let sharedInstance = GoogleManager()
     static let apiKey = "AIzaSyAipMwdz2rIND7o73TNfxm03W_ccdTlK-k"
     fileprivate let decoder = JSONDecoder()
-    func translate(params: GoogleTranslateParams, callback: @escaping (_ translatedText: String?) -> ()) {
+    func translate(params: GoogleParams, callback: @escaping (_ translatedText: String?) -> ()) {
         
-        if let url = GoogleResponse.endpointForParams(params) {
+        if let url = GoogleManager.endpointForParams(params) {
             performRequest(endpoint: url) { [weak self] (result, error) in
                 if let data = result as? Data {
                     
@@ -32,6 +33,7 @@ class GoogleManager: NSObject {
                         callback(response?.data.translations?.first?.translatedText)
                     } catch {
                         print(error)
+                        callback(nil)
                     }
                 }
             }
@@ -39,7 +41,7 @@ class GoogleManager: NSObject {
     }
     
     func supportedLanguages(callback: @escaping (_ languages: [String]?) -> ()) {
-        if let url = GoogleResponse.endpointForSupportedLanguages() {
+        if let url = GoogleManager.endpointForSupportedLanguages() {
             performRequest(endpoint: url) { [weak self] (result, error) in
                 if let data = result as? Data {
                     
@@ -48,6 +50,7 @@ class GoogleManager: NSObject {
                         callback(response?.data.supportedLanguages)
                     } catch {
                         print(error)
+                        callback(nil)
                     }
                 }
             }
@@ -55,7 +58,7 @@ class GoogleManager: NSObject {
     }
     
     func detectLanguageFor(text: String, callback: @escaping (_ translatedText: String?) -> ()) {
-        if let url = GoogleResponse.endpointForDetectingLangOfText(text: text) {
+        if let url = GoogleManager.endpointForDetectingLangOfText(text: text) {
             performRequest(endpoint: url, complition: { [weak self] (result, error) in
                 if let data = result as? Data {
                     
@@ -64,6 +67,7 @@ class GoogleManager: NSObject {
                         callback(response?.data.detectedLanguage)
                     } catch {
                         print(error)
+                        callback(nil)
                     }
                 }
             })
@@ -92,5 +96,39 @@ class GoogleManager: NSObject {
         httprequest.resume()
     }
     
+    fileprivate createRequest(params: GoogleParams) {
+    
+    }
+    
+}
+
+private extension GoogleManager {
+    static func endpointForParams(_ params: GoogleParams) -> URL? {
+        guard let urlEncodedText = params.text.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed),
+            let url = URL(string: "https://www.googleapis.com/language/translate/v2?key=\(GoogleManager.apiKey)&q=\(urlEncodedText)&source=\(params.sourceLang)&target=\(params.targetLang)") else {
+                return nil
+        }
+        
+        return url
+    }
+    
+    static func endpointForSupportedLanguages() -> URL? {
+        guard let url = URL(string: "https://translation.googleapis.com/language/translate/v2/languages?key=\(GoogleManager.apiKey)") else {
+            return nil
+        }
+        return url
+    }
+    
+    static func endpointForDetectingLangOfText(text: String) -> URL? {
+        
+        guard let urlEncodedText = text.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else {
+            return nil
+        }
+        
+        guard let url = URL(string: "https://translation.googleapis.com/language/translate/v2/detect?key=\(GoogleManager.apiKey)&q=\(urlEncodedText)") else {
+            return nil
+        }
+        return url
+    }
 }
 

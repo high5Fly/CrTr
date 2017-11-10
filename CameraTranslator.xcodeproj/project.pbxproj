@@ -14,6 +14,7 @@
 		3D2BBEB11FB1DB9C00D13F23 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D2BBEAF1FB1DB9C00D13F23 /* LaunchScreen.storyboard */; };
 		3D2BBEBA1FB1DBDE00D13F23 /* GoogleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D2BBEB91FB1DBDE00D13F23 /* GoogleManager.swift */; };
 		3D8453581FB5B70400007378 /* GoogleResponses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8453571FB5B70400007378 /* GoogleResponses.swift */; };
+		3D84535B1FB5F0EB00007378 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D84535A1FB5F0EB00007378 /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		3D2BBEB21FB1DB9C00D13F23 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3D2BBEB91FB1DBDE00D13F23 /* GoogleManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleManager.swift; sourceTree = "<group>"; };
 		3D8453571FB5B70400007378 /* GoogleResponses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleResponses.swift; sourceTree = "<group>"; };
+		3D84535A1FB5F0EB00007378 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +76,7 @@
 			children = (
 				3D8453591FB5B74500007378 /* Responses */,
 				3D2BBEB91FB1DBDE00D13F23 /* GoogleManager.swift */,
+				3D84535A1FB5F0EB00007378 /* Constants.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -158,6 +161,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D84535B1FB5F0EB00007378 /* Constants.swift in Sources */,
 				3D2BBEA91FB1DB9C00D13F23 /* ViewController.swift in Sources */,
 				3D2BBEA71FB1DB9C00D13F23 /* AppDelegate.swift in Sources */,
 				3D2BBEBA1FB1DBDE00D13F23 /* GoogleManager.swift in Sources */,

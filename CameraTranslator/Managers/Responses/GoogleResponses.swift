@@ -46,36 +46,6 @@ struct GoogleResponse: Codable {
   
 }
 
-extension GoogleResponse {
-    static func endpointForParams(_ params: GoogleTranslateParams) -> URL? {
-        guard let urlEncodedText = params.text.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed),
-            let url = URL(string: "https://www.googleapis.com/language/translate/v2?key=\(GoogleManager.apiKey)&q=\(urlEncodedText)&source=\(params.sourceLang)&target=\(params.targetLang)") else {
-                return nil
-        }
-        
-        return url
-    }
-    
-    static func endpointForSupportedLanguages() -> URL? {
-        guard let url = URL(string: "https://translation.googleapis.com/language/translate/v2/languages?key=\(GoogleManager.apiKey)") else {
-            return nil
-        }
-        return url
-    }
-    
-    static func endpointForDetectingLangOfText(text: String) -> URL? {
-        
-        guard let urlEncodedText = text.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else {
-            return nil
-        }
-        
-        guard let url = URL(string: "https://translation.googleapis.com/language/translate/v2/detect?key=\(GoogleManager.apiKey)&q=\(urlEncodedText)") else {
-            return nil
-        }
-        return url
-    }
-}
-
 struct Detections: Codable {
     
     let language: String?
@@ -93,3 +63,4 @@ struct Translations: Codable {
         case translatedText = "translatedText"
     }
 }
+

@@ -96,10 +96,6 @@ class GoogleManager: NSObject {
         httprequest.resume()
     }
     
-    fileprivate createRequest(params: GoogleParams) {
-    
-    }
-    
 }
 
 private extension GoogleManager {

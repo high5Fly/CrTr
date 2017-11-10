@@ -16,12 +16,13 @@ struct Constants {
         }
         
         struct URL {
-            let translatingURL = "https://translation.googleapis.com/language/translate/v2?"
-            let suppLanguagesURL = "https://translation.googleapis.com/language/translate/v2/languages?"
-            let detectingLanguageURL = "https://translation.googleapis.com/language/translate/v2/detect?"
-            let textExtractionURL = "https://vision.googleapis.com/v1/images:annotate?"
+            let mainURL = "https://translation.googleapis.com"
+            let translatingPATH = "/language/translate/v2?"
+            let suppLanguagesURL = "/language/translate/v2/languages?"
+            let detectingLanguageURL = "/language/translate/v2/detect?"
+            let textExtractionURL = "/v1/images:annotate?"
             
-            struct URLsubKeys {
+            struct URLparameters {
             
                 let q = "q"
                 let target = "target"

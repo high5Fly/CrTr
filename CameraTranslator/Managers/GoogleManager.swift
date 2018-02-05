@@ -20,7 +20,7 @@ typealias RequestCompletionHandler = ((_ result: Any?, _ error: Error?) -> Void)
 
 class GoogleManager: NSObject {
     static let sharedInstance = GoogleManager()
-    static let apiKey = "AIzaSyAipMwdz2rIND7o73TNfxm03W_ccdTlK-k"
+    static let apiKey = "k"
     fileprivate let decoder = JSONDecoder()
     func translate(params: GoogleParams, callback: @escaping (_ translatedText: String?) -> ()) {
         
